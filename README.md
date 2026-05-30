@@ -1,60 +1,31 @@
-# GILP Laboratories — Website
+# GILP Laboratories Website v2
 
 **Global Industrial & Lifesciences Pharmaceutical Laboratories**
-H M Royal Society, Near Khadi Machine, Kondawa
-3A Building, Flat No. 8, Floor 8 — Pune, Maharashtra
+H M Royal Society, Near Khadi Machine, Kondawa — 3A Building, Flat No. 8, Floor 8, Pune, Maharashtra
 
 ---
 
-## 🚀 Run Locally (Localhost)
+## 🚀 Run on Localhost (Test Before Publishing)
 
-### Option 1 — Python (easiest, no install needed)
-Python comes pre-installed on most systems.
-
+### Option 1 — Python (Recommended, no install needed)
 ```bash
-# Navigate into the project folder
 cd gilp-labs
-
-# Python 3 (recommended)
 python3 -m http.server 8080
-
-# Python 2 (if python3 not available)
-python -m SimpleHTTPServer 8080
 ```
-Then open: **http://localhost:8080**
+Open: **http://localhost:8080**
 
----
-
-### Option 2 — Node.js `serve` package
-
-```bash
-# Install serve globally (one-time)
-npm install -g serve
-
-# Run from inside the folder
-cd gilp-labs
-serve .
-```
-Then open: **http://localhost:3000**
-
----
-
-### Option 3 — VS Code Live Server
-
-1. Install the **Live Server** extension in VS Code
-2. Open the `gilp-labs` folder in VS Code
+### Option 2 — VS Code Live Server
+1. Install **Live Server** extension in VS Code
+2. Open the `gilp-labs` folder
 3. Right-click `index.html` → **Open with Live Server**
 
-Auto-reloads on every file save!
-
----
-
-### Option 4 — PHP (if installed)
-
+### Option 3 — Node.js
 ```bash
-cd gilp-labs
-php -S localhost:8080
+npx serve .
 ```
+
+> ⚠️  **Always run via a local server** (not by double-clicking index.html directly).
+> Browsers block local file access for images and fonts when opened as `file://`.
 
 ---
 
@@ -62,78 +33,119 @@ php -S localhost:8080
 
 ```
 gilp-labs/
-├── index.html          ← Main website (open this)
+├── index.html                  ← Full website + Admin portal
 ├── css/
-│   ├── style.css       ← Public site styles
-│   └── admin.css       ← Admin portal styles
+│   ├── style.css               ← Public website styles (mobile-first)
+│   └── admin.css               ← Admin portal styles
 ├── js/
-│   ├── data.js         ← All site content/data (edit defaults here)
-│   ├── main.js         ← Renders content, nav, forms
-│   └── admin.js        ← Admin portal logic
-└── README.md           ← This file
+│   ├── data.js                 ← All site content (edit defaults here)
+│   ├── main.js                 ← Renders content dynamically
+│   └── admin.js                ← Admin portal logic + image upload
+├── images/
+│   ├── products/
+│   │   └── placeholder.svg     ← Default product image
+│   └── logo/                   ← Put your logo file here
+└── README.md
 ```
 
 ---
 
 ## 🔐 Admin Portal
 
-Click the **⚙ Admin** button in the top-right corner of the website.
+Click **⚙ Admin** button on the website.
 
 | Field    | Value      |
 |----------|------------|
 | Username | `admin`    |
 | Password | `gilp2025` |
 
-**What you can do in Admin:**
-- ✏️  Edit company name, tagline, about description
-- 💊  Add / delete products (live preview on save)
-- 📞  Update phone, email, address, WhatsApp
-- 📊  Change homepage stats and certification badges
+### What you can do:
+| Tab | Actions |
+|-----|---------|
+| 🏢 Company | Edit name, tagline, about text, **upload logo** |
+| 💊 Products | Add products with **photo upload**, delete products |
+| 📞 Contact | Phone, email, WhatsApp, address, hours |
+| 📊 Stats | Products count, years, certification badges |
 
-**Data persistence:** All changes are saved to `localStorage` in your browser — they persist between page refreshes. Clear browser data to reset to defaults.
-
----
-
-## ✏️ Editing Default Content
-
-To permanently change default content (not just in browser), edit **`js/data.js`**.
-
-All site content lives in the `GILP_DATA` object:
-- `GILP_DATA.company`   — name, tagline, about text
-- `GILP_DATA.contact`   — address, phone, email
-- `GILP_DATA.stats`     — product count, years, certifications
-- `GILP_DATA.products`  — product catalogue array
-- `GILP_DATA.mission`   — mission/vision/values/goals
-- `GILP_DATA.whyUs`     — "Why Choose Us" cards
+All changes **save to browser localStorage** — they persist through refreshes.
 
 ---
 
-## ⚠️ Before Going Live (Production)
+## 🖼️ Product Images on GitHub Pages
 
-1. **Change the admin password** in `js/admin.js`:
+### Option A — Upload via Admin (Quick, local only)
+- Use the Admin Portal → Products → Upload photo
+- Image saves as base64 in your browser
+- Works instantly but only in your browser
+
+### Option B — Commit to repo (Permanent, works everywhere) ✅ Recommended
+1. Put image files in `/images/products/` folder (e.g. `disinfectant.jpg`)
+2. Edit `js/data.js` and set the product's `image` field:
    ```js
-   const ADMIN_CREDENTIALS = {
-     username: 'admin',
-     password: 'YOUR_NEW_STRONG_PASSWORD'
-   };
+   { id: 1, name: "Industrial Disinfectants", image: "images/products/disinfectant.jpg", ... }
    ```
+3. Commit and push → image is live on GitHub Pages
 
-2. **Add your real phone number** — update `js/data.js` → `contact.phone`
-
-3. **Connect a backend** for the contact form (`index.html` → `#contact-form`)
-   - Options: Formspree, Netlify Forms, EmailJS, or your own PHP/Node backend
-
-4. **Add your logo** — replace the `G` icon in `.nav-logo-icon` with an `<img>` tag
-
-5. **Deploy** to any static host:
-   - Netlify (drag & drop the folder — free)
-   - Vercel (`vercel deploy` command)
-   - GitHub Pages
-   - Any shared hosting (upload via FTP)
+### Supported formats: JPG, PNG, WebP, SVG
+### Recommended size: 800×600px, under 500KB per image
 
 ---
 
-## 📞 Support
+## 🌐 Deploy to GitHub Pages
 
-Built for GILP Laboratories, Pune.
-Questions? Contact your developer.
+Your site URL will be: **https://fazal0222.github.io**
+
+### Steps:
+1. Go to your repo: https://github.com/Fazal0222/Fazal0222.github.io
+2. Upload all files from this `gilp-labs/` folder directly to the **root** of the repo
+   (index.html should be at the root, not inside a subfolder)
+3. Go to **Settings → Pages → Source**: Deploy from branch `main`, folder `/` (root)
+4. Wait 1–2 minutes → visit https://fazal0222.github.io
+
+### Folder structure in your repo root:
+```
+Fazal0222.github.io/  (repo root)
+├── index.html
+├── css/
+├── js/
+├── images/
+└── README.md
+```
+
+---
+
+## ✏️ Edit Default Content
+
+Open `js/data.js` to permanently change any defaults:
+
+```js
+GILP_DATA.company.name    = "GILP Laboratories"
+GILP_DATA.contact.phone   = "+91 XXXXX XXXXX"    // ← Add your number
+GILP_DATA.contact.email   = "info@gilp.com"
+```
+
+---
+
+## ⚠️ Before Going Live — Checklist
+
+- [ ] **Change admin password** in `js/admin.js` (line: `const ADMIN_CREDS`)
+- [ ] Add your real **phone number** in `js/data.js` → `contact.phone`
+- [ ] Upload your **company logo** via Admin Portal or put file in `images/logo/`
+- [ ] Add **product photos** to `images/products/` and update `js/data.js`
+- [ ] Connect a **contact form backend** (Formspree or EmailJS — free):
+  - Formspree: https://formspree.io (add `action="https://formspree.io/f/YOURCODE"` to the form)
+  - EmailJS: https://emailjs.com (free, works with Gmail)
+- [ ] Test on mobile (Chrome DevTools → Toggle device toolbar)
+
+---
+
+## 📱 Mobile & Tablet Support
+
+The site is fully responsive:
+- **Mobile** (< 640px): Single column, hamburger menu, stacked admin tabs
+- **Tablet** (640–1024px): 2-column grids, expanded nav
+- **Desktop** (> 1024px): Full 3–4 column layouts, sidebar admin
+
+---
+
+Built for GILP Laboratories, Pune, Maharashtra 🇮🇳

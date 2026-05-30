@@ -3,113 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="GILP Laboratories — Global Industrial & Lifesciences Pharmaceutical Laboratories. GMP Certified pharmaceutical formulations from Pune, Maharashtra.">
-  <meta name="keywords" content="GILP Laboratories, pharmaceutical, industrial, lifesciences, Pune, GMP, WHO, ophthalmic, dermatologic">
-  <meta property="og:title" content="GILP Laboratories | Global Industrial & Lifesciences Pharmaceutical">
-  <meta property="og:description" content="Precision pharmaceutical formulations from Pune, Maharashtra. GMP Certified. WHO Compliant.">
+  <meta name="description" content="GILP Laboratories — Global Industrial & Lifesciences Pharmaceutical Laboratories, Pune, Maharashtra. GMP Certified. WHO Compliant.">
+  <meta name="theme-color" content="#0a1628">
   <title>GILP Laboratories | Global Industrial & Lifesciences Pharmaceutical</title>
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 
-<!-- ============================================================
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ═══════════════════════════════════════
      NAVIGATION
-============================================================ -->
+═══════════════════════════════════════ -->
 <header class="nav" role="banner">
-  <a href="#home" class="nav-logo">
-    <div class="nav-logo-icon">G</div>
-    <div class="nav-logo-text">
-      <strong>GILP LABORATORIES</strong>
-      <small>Global Industrial &amp; Lifesciences Pharmaceutical</small>
+  <div class="container nav-inner">
+
+    <a href="#home" class="nav-logo" aria-label="GILP Laboratories — Home">
+      <div class="nav-logo-icon" id="nav-logo-icon">
+        <span class="nav-logo-icon-letter">G</span>
+      </div>
+      <div class="nav-logo-text">
+        <strong>GILP LABORATORIES</strong>
+        <small>Global Industrial &amp; Lifesciences Pharmaceutical</small>
+      </div>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="#home"     class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta">Enquire Now</a>
+      <button class="nav-admin" onclick="openAdmin()" aria-label="Open admin portal">⚙ Admin</button>
+      <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-drawer">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </a>
 
-  <nav aria-label="Main navigation">
-    <ul class="nav-links">
-      <li><a href="#home"     class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#mission">Mission</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <div class="nav-actions">
-    <a href="#contact" class="nav-cta">Enquire Now</a>
-    <button class="nav-admin" onclick="openAdmin()" aria-label="Open admin portal">⚙ Admin</button>
-    <button class="nav-toggle" aria-label="Toggle mobile menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </header>
 
+<!-- Mobile Drawer -->
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#products">Products</a>
+  <a href="#mission">Mission</a>
+  <a href="#contact">Contact</a>
+  <div class="nav-drawer-actions">
+    <a href="#contact" class="btn btn-primary">Enquire Now</a>
+    <button class="nav-admin" onclick="openAdmin(); document.querySelector('.nav-burger').click();" style="width:100%;text-align:center;padding:12px">⚙ Admin Portal</button>
+  </div>
+</nav>
 
-<!-- ============================================================
+
+<main id="main-content">
+
+<!-- ═══════════════════════════════════════
      HERO
-============================================================ -->
-<section class="hero" id="home" aria-label="Hero">
-  <div class="hero-grid" aria-hidden="true"></div>
-  <div class="hero-glow" aria-hidden="true"></div>
+═══════════════════════════════════════ -->
+<section class="hero" id="home" aria-label="Homepage hero">
+  <div class="hero-grid"  aria-hidden="true"></div>
+  <div class="hero-glow"  aria-hidden="true"></div>
 
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      Pune, Maharashtra &nbsp;·&nbsp; India
-    </div>
-
-    <h1>Where <em>Science</em> Meets<br>Industrial Precision</h1>
-
-    <p>GILP Laboratories develops, manufactures, and distributes high-quality pharmaceutical and industrial lifesciences formulations — engineered for performance, certified for trust.</p>
-
-    <div class="hero-btns">
-      <a href="#products" class="btn-primary">Explore Products</a>
-      <a href="#about"    class="btn-outline">About Us</a>
-    </div>
-
-    <div class="hero-stats">
-      <div id="hero-stat-products">
-        <div class="hero-stat-num">150+</div>
-        <div class="hero-stat-label">Products</div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Pune, Maharashtra &nbsp;·&nbsp; India
       </div>
-      <div id="hero-stat-cert">
-        <div class="hero-stat-num">GMP</div>
-        <div class="hero-stat-label">Certified</div>
+
+      <h1>Where <em>Science</em> Meets<br>Industrial Precision</h1>
+
+      <p class="hero-desc">
+        GILP Laboratories develops, manufactures, and distributes high-quality
+        pharmaceutical and industrial lifesciences formulations — engineered for
+        performance, certified for trust.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#products" class="btn btn-primary">Explore Products</a>
+        <a href="#about"    class="btn btn-outline">About Us</a>
       </div>
-      <div>
-        <div class="hero-stat-num">WHO</div>
-        <div class="hero-stat-label">Compliant</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">ISO</div>
-        <div class="hero-stat-label">Quality</div>
+
+      <div class="hero-stats" role="list" aria-label="Key statistics">
+        <div role="listitem" id="hero-stat-products">
+          <div class="hero-stat-num">150+</div>
+          <div class="hero-stat-label">Products</div>
+        </div>
+        <div role="listitem">
+          <div class="hero-stat-num">GMP</div>
+          <div class="hero-stat-label">Certified</div>
+        </div>
+        <div role="listitem">
+          <div class="hero-stat-num">WHO</div>
+          <div class="hero-stat-label">Compliant</div>
+        </div>
+        <div role="listitem">
+          <div class="hero-stat-num">ISO</div>
+          <div class="hero-stat-label">Quality</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════
      ABOUT
-============================================================ -->
+═══════════════════════════════════════ -->
 <section class="about" id="about">
   <div class="container">
     <div class="about-grid">
 
-      <!-- Visual block -->
       <div class="about-visual" aria-hidden="true">
         <div class="about-cards">
           <div class="about-card" id="about-stat-products">
-            <div class="num">150+</div>
-            <div class="lbl">Products</div>
+            <div class="num">150+</div><div class="lbl">Products</div>
           </div>
           <div class="about-card" id="about-stat-years">
-            <div class="num">5+</div>
-            <div class="lbl">Years</div>
+            <div class="num">5+</div><div class="lbl">Years</div>
           </div>
           <div class="about-card span2">
-            <div class="num" style="font-size:18px">Pune HQ</div>
-            <div class="lbl">H M Royal Society, Kondawa, Pune — Maharashtra</div>
+            <div class="num" style="font-size:17px;line-height:1.3">Pune, Maharashtra</div>
+            <div class="lbl">H M Royal Society, Kondawa — 3A Building, Floor 8</div>
           </div>
         </div>
         <div class="cert-row" id="cert-badges">
@@ -120,11 +148,10 @@
         </div>
       </div>
 
-      <!-- Text block -->
       <div>
         <span class="section-tag">About GILP Laboratories</span>
         <h2 class="section-title">Precision Science,<br><em>Global Impact</em></h2>
-        <p id="about-desc" style="font-size:15px; color:var(--text-muted); line-height:1.85; margin-bottom:32px">
+        <p id="about-desc" style="font-size:15px;color:var(--text-muted);line-height:1.85;margin-bottom:28px">
           GILP Laboratories is committed to developing, manufacturing, and distributing
           high-quality pharmaceutical and industrial lifesciences solutions from Pune,
           Maharashtra. Every formulation carries our commitment to patient safety and
@@ -155,14 +182,15 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════
      PRODUCTS
-============================================================ -->
+═══════════════════════════════════════ -->
 <section class="products" id="products">
   <div class="container">
     <div class="products-header">
@@ -170,7 +198,7 @@
         <span class="section-tag">Our Portfolio</span>
         <h2 class="section-title">Formulations Built for <em>Every Need</em></h2>
       </div>
-      <a href="#contact" class="btn-primary">Request Catalogue</a>
+      <a href="#contact" class="btn btn-primary">Request Catalogue</a>
     </div>
     <div class="products-grid" id="products-grid" aria-label="Product catalogue">
       <!-- Populated by main.js -->
@@ -179,9 +207,9 @@
 </section>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════
      MISSION / VISION
-============================================================ -->
+═══════════════════════════════════════ -->
 <section class="mission" id="mission">
   <div class="container">
     <span class="section-tag">Our Foundation</span>
@@ -193,24 +221,24 @@
 </section>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════
      WHY GILP
-============================================================ -->
+═══════════════════════════════════════ -->
 <section class="why" id="why">
   <div class="container">
     <span class="section-tag">Why Choose Us</span>
     <h2 class="section-title">The GILP <em>Advantage</em></h2>
     <p class="section-sub">Top-tier pharmaceutical formulations, rigorous quality standards, and an unwavering commitment to the people we serve.</p>
-    <div class="why-grid" id="why-grid" aria-label="Why choose GILP">
+    <div class="why-grid" id="why-grid" aria-label="Reasons to choose GILP">
       <!-- Populated by main.js -->
     </div>
   </div>
 </section>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════
      CONTACT
-============================================================ -->
+═══════════════════════════════════════ -->
 <section class="contact" id="contact">
   <div class="container">
     <span class="section-tag">Get In Touch</span>
@@ -218,12 +246,11 @@
 
     <div class="contact-grid">
 
-      <!-- Info -->
       <div class="contact-info">
         <h3>GILP Laboratories</h3>
 
         <div class="contact-line">
-          <div class="contact-icon" aria-hidden="true">📍</div>
+          <div class="ci-icon" aria-hidden="true">📍</div>
           <div>
             <strong>Head Office</strong>
             <span id="contact-address">
@@ -235,15 +262,23 @@
         </div>
 
         <div class="contact-line">
-          <div class="contact-icon" aria-hidden="true">📞</div>
+          <div class="ci-icon" aria-hidden="true">📞</div>
           <div>
             <strong>Phone</strong>
-            <span id="contact-phone">+91 — (Add your number)</span>
+            <span id="contact-phone"><em style="color:#aaa">Add via Admin</em></span>
+          </div>
+        </div>
+
+        <div class="contact-line" id="contact-whatsapp-row" style="display:none">
+          <div class="ci-icon" aria-hidden="true">💬</div>
+          <div>
+            <strong>WhatsApp</strong>
+            <span id="contact-whatsapp"></span>
           </div>
         </div>
 
         <div class="contact-line">
-          <div class="contact-icon" aria-hidden="true">✉️</div>
+          <div class="ci-icon" aria-hidden="true">✉️</div>
           <div>
             <strong>Email</strong>
             <span id="contact-email">info@gilplaboratories.com</span>
@@ -251,7 +286,7 @@
         </div>
 
         <div class="contact-line">
-          <div class="contact-icon" aria-hidden="true">🕐</div>
+          <div class="ci-icon" aria-hidden="true">🕐</div>
           <div>
             <strong>Working Hours</strong>
             <span id="contact-hours">Mon–Sat: 9:00 AM – 6:00 PM IST</span>
@@ -259,7 +294,6 @@
         </div>
       </div>
 
-      <!-- Form -->
       <form class="contact-form" id="contact-form" novalidate>
         <div class="form-row">
           <div class="form-group">
@@ -271,13 +305,15 @@
             <input id="cf-company" type="text" placeholder="Company name">
           </div>
         </div>
-        <div class="form-group">
-          <label for="cf-email">Email</label>
-          <input id="cf-email" type="email" placeholder="your@email.com" required>
-        </div>
-        <div class="form-group">
-          <label for="cf-phone">Phone</label>
-          <input id="cf-phone" type="tel" placeholder="+91 XXXXX XXXXX">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" type="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="cf-phone">Phone</label>
+            <input id="cf-phone" type="tel" placeholder="+91 XXXXX XXXXX">
+          </div>
         </div>
         <div class="form-group">
           <label for="cf-type">Requirement Type</label>
@@ -291,32 +327,36 @@
         </div>
         <div class="form-group">
           <label for="cf-message">Message</label>
-          <textarea id="cf-message" placeholder="Describe your requirements in detail…"></textarea>
+          <textarea id="cf-message" placeholder="Describe your requirements…"></textarea>
         </div>
-        <button type="submit" class="form-submit">Send Enquiry →</button>
+        <button type="submit" class="btn btn-dark btn-full">Send Enquiry →</button>
       </form>
 
     </div>
   </div>
 </section>
 
+</main><!-- /#main-content -->
 
-<!-- ============================================================
+
+<!-- ═══════════════════════════════════════
      FOOTER
-============================================================ -->
+═══════════════════════════════════════ -->
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-grid">
 
       <div class="footer-brand">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:0">
-          <div class="nav-logo-icon" style="width:34px;height:34px;font-size:15px">G</div>
-          <strong style="font-family:var(--font-display); color:#fff; font-size:15px">GILP LABORATORIES</strong>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="nav-logo-icon" id="footer-logo-icon" style="width:36px;height:36px">
+            <span class="nav-logo-icon-letter" style="font-size:16px">G</span>
+          </div>
+          <strong style="font-family:var(--font-display);color:#fff;font-size:15px">GILP LABORATORIES</strong>
         </div>
         <p>Global Industrial &amp; Lifesciences Pharmaceutical Laboratories — Advancing science through precision, purpose, and innovation from Pune, Maharashtra.</p>
-        <div class="footer-social" aria-label="Social media links">
+        <div class="footer-social" aria-label="Social media">
           <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-          <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-link" aria-label="Twitter / X">𝕏</a>
           <a href="#" class="social-link" aria-label="Facebook">f</a>
         </div>
       </div>
@@ -345,13 +385,12 @@
         <h4>Contact</h4>
         <ul class="footer-links">
           <li><a id="footer-email" href="#">info@gilplaboratories.com</a></li>
-          <li><span id="footer-phone" style="color:rgba(255,255,255,0.45); font-size:13px">+91 —</span></li>
-          <li><span id="footer-address" style="color:rgba(255,255,255,0.45); font-size:13px; line-height:1.6">Kondawa, Pune, Maharashtra</span></li>
+          <li><span id="footer-phone" style="color:rgba(255,255,255,0.42);font-size:13px"></span></li>
+          <li><span id="footer-address" style="color:rgba(255,255,255,0.42);font-size:13px;line-height:1.6">Kondawa, Pune, Maharashtra</span></li>
         </ul>
       </div>
 
     </div>
-
     <div class="footer-bottom">
       <span id="footer-copy">© 2025 GILP Laboratories. All rights reserved.</span>
       <span>Made with ❤️ in Pune, India</span>
@@ -360,98 +399,134 @@
 </footer>
 
 
-<!-- ============================================================
-     ADMIN PORTAL OVERLAY
-============================================================ -->
-<div class="admin-overlay" id="admin-overlay" role="dialog" aria-modal="true" aria-label="Admin Portal">
+<!-- ═══════════════════════════════════════
+     ADMIN PORTAL
+═══════════════════════════════════════ -->
+<div class="admin-overlay" id="admin-overlay" role="dialog" aria-modal="true" aria-label="GILP Admin Portal">
   <div class="admin-modal">
 
-    <!-- Modal Header -->
+    <!-- Header -->
     <div class="admin-header">
       <div class="admin-header-title">
         <h2>⚙ GILP Admin Portal</h2>
         <small>Internal Use Only — Content Management</small>
       </div>
-      <button class="admin-close" onclick="closeAdmin()" aria-label="Close admin portal">×</button>
+      <button class="admin-close" onclick="closeAdmin()" aria-label="Close">×</button>
     </div>
 
-    <!-- Login Screen -->
+    <!-- Mobile tabs (hidden on desktop, shown via CSS) -->
+    <div class="admin-tabs" role="tablist" aria-label="Admin sections">
+      <div class="admin-tab active" data-panel="company" role="tab">🏢 Company</div>
+      <div class="admin-tab"        data-panel="products" role="tab">💊 Products</div>
+      <div class="admin-tab"        data-panel="contact"  role="tab">📞 Contact</div>
+      <div class="admin-tab"        data-panel="stats"    role="tab">📊 Stats</div>
+    </div>
+
+    <!-- Login -->
     <div class="admin-login" id="admin-login">
       <div class="admin-login-icon">🔐</div>
       <h3>Admin Login</h3>
-      <p>Enter your credentials to manage the GILP website content</p>
+      <p>Enter your credentials to manage the GILP website</p>
       <div class="login-form">
-        <input type="text"     id="admin-user" placeholder="Username" autocomplete="username">
-        <input type="password" id="admin-pass" placeholder="Password" autocomplete="current-password">
-        <button onclick="doLogin()">Login to Admin Portal</button>
-        <div class="login-error" id="admin-login-error">Invalid credentials. Please try again.</div>
-        <!-- <div class="login-hint">Demo: <strong>admin</strong> / <strong>gilp2025</strong></div> -->
+        <input type="text"     id="admin-user" placeholder="Username"  autocomplete="username">
+        <input type="password" id="admin-pass" placeholder="Password"  autocomplete="current-password">
+        <button class="btn btn-dark btn-full" onclick="doLogin()">Login to Admin Portal</button>
+        <div class="login-error" id="admin-login-error">Invalid credentials. Try again.</div>
+        <div class="login-hint">Demo — <strong>admin</strong> / <strong>gilp2025</strong></div>
       </div>
     </div>
 
-    <!-- Admin Workspace (shown after login) -->
+    <!-- Workspace -->
     <div class="admin-workspace" id="admin-workspace">
 
-      <!-- Sidebar -->
+      <!-- Sidebar (desktop) -->
       <aside class="admin-sidebar">
         <nav class="sidebar-nav">
-          <div class="sidebar-item active" data-panel="company">
-            <span class="s-icon">🏢</span> Company Info
-          </div>
-          <div class="sidebar-item" data-panel="products">
-            <span class="s-icon">💊</span> Products
-          </div>
-          <div class="sidebar-item" data-panel="contact">
-            <span class="s-icon">📞</span> Contact
-          </div>
-          <div class="sidebar-item" data-panel="stats">
-            <span class="s-icon">📊</span> Stats &amp; Certs
-          </div>
+          <div class="sidebar-item active" data-panel="company"><span class="s-icon">🏢</span> Company</div>
+          <div class="sidebar-item"        data-panel="products"><span class="s-icon">💊</span> Products</div>
+          <div class="sidebar-item"        data-panel="contact"><span class="s-icon">📞</span> Contact</div>
+          <div class="sidebar-item"        data-panel="stats"><span class="s-icon">📊</span> Stats</div>
         </nav>
         <div class="sidebar-footer">
           <button class="sidebar-logout" onclick="doLogout()">⬅ Logout</button>
         </div>
       </aside>
 
-      <!-- Main content -->
+      <!-- Content -->
       <main class="admin-content">
 
-        <!-- ——— Panel: Company ——— -->
+        <!-- ── COMPANY ── -->
         <div class="admin-panel active" id="panel-company">
           <h3 class="admin-panel-title">Company Information</h3>
 
+          <!-- Logo Upload -->
+          <div class="a-section">
+            <div class="a-section-title">Company Logo</div>
+            <div class="logo-upload-zone">
+              <div class="logo-current" id="logo-current">
+                <span class="logo-current-letter">G</span>
+              </div>
+              <div class="logo-upload-actions">
+                <label>
+                  <input type="file" id="logo-file-input" accept="image/*" style="display:none">
+                  <button class="logo-upload-btn" onclick="document.getElementById('logo-file-input').click(); return false;">
+                    Upload Logo Image
+                  </button>
+                </label>
+                <button class="btn btn-ghost btn-sm" onclick="clearLogo()">Remove Logo</button>
+                <span class="logo-upload-hint">PNG, JPG, SVG · Max 2 MB<br>Recommended: 200×200 px square</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Basic details -->
           <div class="a-section">
             <div class="a-section-title">Basic Details</div>
             <div class="a-row">
               <div class="a-group">
-                <label for="a-company-name">Company Name</label>
-                <input id="a-company-name" type="text" value="GILP Laboratories">
+                <label for="a-name">Company Name</label>
+                <input id="a-name" type="text" value="GILP Laboratories">
               </div>
               <div class="a-group">
-                <label for="a-company-tagline">Tagline (Hero subtitle)</label>
-                <input id="a-company-tagline" type="text" value="Where Science Meets Industrial Precision">
+                <label for="a-tagline">Hero Tagline</label>
+                <input id="a-tagline" type="text" value="Where Science Meets Industrial Precision">
               </div>
             </div>
             <div class="a-group">
-              <label for="a-company-about">About Description (shown on About section)</label>
-              <textarea id="a-company-about" style="min-height:120px">GILP Laboratories is committed to developing, manufacturing, and distributing high-quality pharmaceutical and industrial lifesciences solutions from Pune, Maharashtra. Guided by integrity, innovation, and scientific excellence — every formulation carries our commitment to patient safety and industrial precision.</textarea>
+              <label for="a-about">About Description</label>
+              <textarea id="a-about" style="min-height:120px">GILP Laboratories is committed to developing, manufacturing, and distributing high-quality pharmaceutical and industrial lifesciences solutions from Pune, Maharashtra. Guided by integrity, innovation, and scientific excellence — every formulation carries our commitment to patient safety and industrial precision.</textarea>
             </div>
           </div>
 
-          <button class="save-btn" onclick="saveCompany()">Save Changes ✓</button>
+          <button class="save-btn" onclick="saveCompany()">Save Company Info ✓</button>
         </div>
 
-        <!-- ——— Panel: Products ——— -->
+        <!-- ── PRODUCTS ── -->
         <div class="admin-panel" id="panel-products">
           <h3 class="admin-panel-title">Product Management</h3>
 
-          <button class="add-prod-toggle" onclick="toggleAddForm()">
-            + Add New Product
-          </button>
+          <button class="add-prod-toggle" onclick="toggleAddForm()">+ Add New Product</button>
 
           <!-- Add product form -->
           <div class="add-prod-form" id="add-prod-form">
             <h4>New Product Details</h4>
+
+            <!-- Image upload zone -->
+            <div class="a-group">
+              <label>Product Photo</label>
+              <div class="img-upload-zone" id="np-img-zone" tabindex="0" role="button" aria-label="Upload product image">
+                <input type="file" id="np-img-input" accept="image/*">
+                <input type="hidden" id="np-img-dataurl">
+                <div class="img-upload-icon">📷</div>
+                <div class="img-upload-text">Click to upload or drag &amp; drop</div>
+                <div class="img-upload-sub">JPG, PNG, WebP · Max 5 MB · Recommended 800×600</div>
+                <div class="img-preview-wrap">
+                  <img class="img-preview" id="np-img-preview" alt="Preview">
+                  <button class="img-remove-btn" id="np-img-remove" onclick="clearNewProdImage(); event.stopPropagation();" aria-label="Remove image">×</button>
+                </div>
+              </div>
+            </div>
+
             <div class="a-row">
               <div class="a-group">
                 <label for="np-name">Product Name *</label>
@@ -468,38 +543,40 @@
                 </select>
               </div>
             </div>
-            <div class="a-row">
-              <div class="a-group">
-                <label for="np-emoji">Emoji / Icon</label>
-                <input id="np-emoji" type="text" value="💊" placeholder="💊">
-              </div>
-              <div class="a-group">
-                <label for="np-tags">Tags (comma separated)</label>
-                <input id="np-tags" type="text" placeholder="GMP, Sterile, Topical">
-              </div>
+            <div class="a-group">
+              <label for="np-tags">Tags (comma separated)</label>
+              <input id="np-tags" type="text" placeholder="GMP, Sterile, Topical">
             </div>
             <div class="a-group">
               <label for="np-desc">Description *</label>
-              <textarea id="np-desc" placeholder="Brief description of the product formulation and use case…"></textarea>
+              <textarea id="np-desc" placeholder="Describe the product formulation and use case…"></textarea>
             </div>
-            <button class="save-btn" onclick="addProduct()">Add Product to Website ✓</button>
+            <button class="save-btn" onclick="addProduct()">Add Product ✓</button>
           </div>
 
-          <!-- Existing products list -->
-          <div class="admin-prod-list" id="admin-prod-list">
-            <!-- Populated by admin.js -->
+          <!-- Product list -->
+          <div class="admin-prod-list" id="admin-prod-list"></div>
+
+          <!-- GitHub Pages note -->
+          <div style="background:#fffbea;border:1px solid #f0d060;border-radius:10px;padding:14px 16px;font-size:12px;color:#7a5c00;margin-top:8px">
+            <strong>📌 GitHub Pages Image Note:</strong><br>
+            Images uploaded here are saved as base64 in your browser's localStorage for instant preview.
+            To make them permanent across all devices, also commit the image files to
+            <code style="background:rgba(0,0,0,0.07);padding:1px 5px;border-radius:3px">/images/products/</code>
+            in your GitHub repo, then update the product's image path in
+            <code style="background:rgba(0,0,0,0.07);padding:1px 5px;border-radius:3px">js/data.js</code>.
           </div>
         </div>
 
-        <!-- ——— Panel: Contact ——— -->
+        <!-- ── CONTACT ── -->
         <div class="admin-panel" id="panel-contact">
           <h3 class="admin-panel-title">Contact Information</h3>
 
           <div class="a-section">
             <div class="a-section-title">Address</div>
             <div class="a-group">
-              <label for="a-contact-address">Full Address (use line breaks)</label>
-              <textarea id="a-contact-address" style="min-height:100px">H M Royal Society, Near Khadi Machine, Kondawa
+              <label for="a-address">Full Address (use line breaks)</label>
+              <textarea id="a-address" style="min-height:90px">H M Royal Society, Near Khadi Machine, Kondawa
 3A Building, Flat No. 8, Floor 8
 Pune, Maharashtra — India</textarea>
             </div>
@@ -509,39 +586,39 @@ Pune, Maharashtra — India</textarea>
             <div class="a-section-title">Contact Details</div>
             <div class="a-row">
               <div class="a-group">
-                <label for="a-contact-phone">Phone Number</label>
-                <input id="a-contact-phone" type="tel" placeholder="+91 XXXXX XXXXX">
+                <label for="a-phone">Phone</label>
+                <input id="a-phone" type="tel" placeholder="+91 XXXXX XXXXX">
               </div>
               <div class="a-group">
-                <label for="a-contact-email">Email Address</label>
-                <input id="a-contact-email" type="email" value="info@gilplaboratories.com">
+                <label for="a-email">Email</label>
+                <input id="a-email" type="email" value="info@gilplaboratories.com">
               </div>
             </div>
             <div class="a-row">
               <div class="a-group">
-                <label for="a-contact-whatsapp">WhatsApp Number</label>
-                <input id="a-contact-whatsapp" type="tel" placeholder="+91 XXXXX XXXXX">
+                <label for="a-whatsapp">WhatsApp</label>
+                <input id="a-whatsapp" type="tel" placeholder="+91 XXXXX XXXXX">
               </div>
               <div class="a-group">
-                <label for="a-contact-website">Website URL</label>
-                <input id="a-contact-website" type="text" value="www.gilplaboratories.com">
+                <label for="a-website">Website</label>
+                <input id="a-website" type="text" value="fazal0222.github.io">
               </div>
             </div>
             <div class="a-group">
-              <label for="a-contact-hours">Working Hours</label>
-              <input id="a-contact-hours" type="text" value="Mon–Sat: 9:00 AM – 6:00 PM IST">
+              <label for="a-hours">Working Hours</label>
+              <input id="a-hours" type="text" value="Mon–Sat: 9:00 AM – 6:00 PM IST">
             </div>
           </div>
 
           <button class="save-btn" onclick="saveContact()">Save Contact Info ✓</button>
         </div>
 
-        <!-- ——— Panel: Stats ——— -->
+        <!-- ── STATS ── -->
         <div class="admin-panel" id="panel-stats">
           <h3 class="admin-panel-title">Stats &amp; Certifications</h3>
 
           <div class="a-section">
-            <div class="a-section-title">Homepage statistics (shown in hero section)</div>
+            <div class="a-section-title">Homepage Statistics</div>
             <div class="admin-stats-grid">
               <div class="admin-stat-card">
                 <label for="a-stat-products">Products Count</label>
@@ -555,47 +632,30 @@ Pune, Maharashtra — India</textarea>
           </div>
 
           <div class="a-section">
-            <div class="a-section-title">Certification badges (shown on About section)</div>
-            <div class="a-row-3" style="grid-template-columns:1fr 1fr 1fr 1fr">
-              <div class="a-group">
-                <label for="a-stat-cert1">Badge 1</label>
-                <input id="a-stat-cert1" type="text" value="GMP">
-              </div>
-              <div class="a-group">
-                <label for="a-stat-cert2">Badge 2</label>
-                <input id="a-stat-cert2" type="text" value="WHO">
-              </div>
-              <div class="a-group">
-                <label for="a-stat-cert3">Badge 3</label>
-                <input id="a-stat-cert3" type="text" value="ISO">
-              </div>
-              <div class="a-group">
-                <label for="a-stat-cert4">Badge 4</label>
-                <input id="a-stat-cert4" type="text" value="GDP">
-              </div>
+            <div class="a-section-title">Certification Badges (About section)</div>
+            <div class="a-row-3">
+              <div class="a-group"><label for="a-stat-cert1">Badge 1</label><input id="a-stat-cert1" type="text" value="GMP"></div>
+              <div class="a-group"><label for="a-stat-cert2">Badge 2</label><input id="a-stat-cert2" type="text" value="WHO"></div>
+              <div class="a-group"><label for="a-stat-cert3">Badge 3</label><input id="a-stat-cert3" type="text" value="ISO"></div>
+              <div class="a-group"><label for="a-stat-cert4">Badge 4</label><input id="a-stat-cert4" type="text" value="GDP"></div>
             </div>
           </div>
 
           <button class="save-btn" onclick="saveStats()">Save Stats ✓</button>
         </div>
 
-      </main>
+      </main><!-- /admin-content -->
     </div><!-- /admin-workspace -->
 
   </div><!-- /admin-modal -->
 </div><!-- /admin-overlay -->
 
 
-<!-- ============================================================
-     TOAST NOTIFICATION
-============================================================ -->
+<!-- Toast notification -->
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 
-<!-- ============================================================
-     SCRIPTS
-     Order matters: data first, then main, then admin
-============================================================ -->
+<!-- Scripts — order matters: data → main → admin -->
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script src="js/admin.js"></script>
