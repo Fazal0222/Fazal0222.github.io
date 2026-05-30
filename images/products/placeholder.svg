@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#e8f4f8"/>
+  <rect x="160" y="80" width="80" height="110" rx="8" fill="#b0cfe0"/>
+  <rect x="170" y="70" width="60" height="20" rx="4" fill="#90b8cc"/>
+  <rect x="168" y="105" width="64" height="12" rx="2" fill="white" opacity="0.7"/>
+  <rect x="168" y="123" width="64" height="8" rx="2" fill="white" opacity="0.5"/>
+  <rect x="168" y="137" width="40" height="8" rx="2" fill="white" opacity="0.5"/>
+  <text x="200" y="225" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7a9fb0">Product Image</text>
+  <text x="200" y="245" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#9ab8c8">Upload via Admin Portal</text>
+</svg>

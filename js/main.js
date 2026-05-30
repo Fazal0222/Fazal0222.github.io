@@ -1,78 +1,111 @@
 /**
- * GILP LABORATORIES — Main Site Script
- * Renders all dynamic content from GILP_DATA
+ * GILP LABORATORIES — Main Site Script v2
  */
 
-/* ——— NAV scroll effect ——— */
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('.nav');
-  if (window.scrollY > 60) nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
-  else nav.style.boxShadow = 'none';
+const PLACEHOLDER = 'images/products/placeholder.svg';
 
-  // Active nav link
+/* ──────────────────────────────────────────
+   NAV
+────────────────────────────────────────── */
+const nav      = document.querySelector('.nav');
+const burger   = document.querySelector('.nav-burger');
+const drawer   = document.querySelector('.nav-drawer');
+const navLinks = document.querySelectorAll('.nav-links a, .nav-drawer a');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  updateActiveLink();
+}, { passive: true });
+
+burger.addEventListener('click', () => {
+  const open = burger.classList.toggle('open');
+  drawer.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+  burger.setAttribute('aria-expanded', open);
+});
+
+document.querySelectorAll('.nav-drawer a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+function updateActiveLink() {
   const sections = ['home','about','products','mission','why','contact'];
-  let current = '';
+  let current = 'home';
   sections.forEach(id => {
     const el = document.getElementById(id);
-    if (el && window.scrollY >= el.offsetTop - 100) current = id;
+    if (el && window.scrollY >= el.offsetTop - 90) current = id;
   });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-});
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+}
 
-/* ——— Mobile nav toggle ——— */
-document.querySelector('.nav-toggle').addEventListener('click', () => {
-  document.querySelector('.nav-links').classList.toggle('open');
-});
-document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
-});
-
-/* ——— Render all sections from data ——— */
+/* ──────────────────────────────────────────
+   RENDER SITE
+────────────────────────────────────────── */
 function renderSite() {
-  renderHero();
-  renderAbout();
+  renderLogo();
   renderProducts();
   renderMission();
   renderWhyUs();
   renderContact();
   renderFooter();
+  renderAboutStats();
 }
 
-function renderHero() {
-  const d = GILP_DATA;
-  setText('hero-tagline', d.company.tagline);
-  setText('hero-about', d.company.about.substring(0, 180) + '…');
-  setHTML('hero-stat-products', `<div class="hero-stat-num">${d.stats.products}</div><div class="hero-stat-label">Products</div>`);
-  setHTML('hero-stat-cert', `
-    <div class="hero-stat-num">${d.stats.cert1}</div><div class="hero-stat-label">Certified</div>
-  `);
+function renderLogo() {
+  const d = GILP_DATA.company;
+  const logoContainers = document.querySelectorAll('.nav-logo-icon');
+  logoContainers.forEach(el => {
+    if (d.logoImage) {
+      el.innerHTML = `<img src="${d.logoImage}" alt="GILP Logo">`;
+    } else {
+      el.innerHTML = `<span class="nav-logo-icon-letter">${d.logoLetter || 'G'}</span>`;
+    }
+  });
 }
 
-function renderAbout() {
+function renderAboutStats() {
   const d = GILP_DATA;
   setHTML('about-stat-products', `<div class="num">${d.stats.products}</div><div class="lbl">Products</div>`);
-  setHTML('about-stat-years', `<div class="num">${d.stats.years}</div><div class="lbl">Years</div>`);
-  setText('about-desc', d.company.about);
-  // Cert badges
+  setHTML('about-stat-years',    `<div class="num">${d.stats.years}</div><div class="lbl">Years</div>`);
   const certs = d.certifications || [];
-  setHTML('cert-badges', certs.map(c => `<div class="cert-badge">${c.replace(' Certified','').replace(' Compliant','')}</div>`).join(''));
+  setHTML('cert-badges', certs.map(c =>
+    `<div class="cert-badge">${c.replace(' Certified','').replace(' Compliant','')}</div>`
+  ).join(''));
+  setHTML('hero-stat-products', `
+    <div class="hero-stat-num">${d.stats.products}</div>
+    <div class="hero-stat-label">Products</div>
+  `);
+  setText('about-desc', d.company.about);
 }
 
 function renderProducts() {
   const grid = document.getElementById('products-grid');
   if (!grid) return;
+  if (!GILP_DATA.products.length) {
+    grid.innerHTML = `<p style="color:var(--text-muted);font-size:15px;grid-column:1/-1;text-align:center;padding:40px 0">No products yet. Add products via the Admin Portal.</p>`;
+    return;
+  }
   grid.innerHTML = GILP_DATA.products.map(p => `
-    <div class="prod-card">
-      <div class="prod-thumb ${p.color || 'c1'}">${p.emoji}</div>
+    <article class="prod-card">
+      <div class="prod-thumb">
+        <img
+          src="${p.image || PLACEHOLDER}"
+          alt="${p.name}"
+          loading="lazy"
+          onerror="this.src='${PLACEHOLDER}'"
+        >
+      </div>
       <div class="prod-body">
         <div class="prod-cat">${p.category}</div>
-        <div class="prod-name">${p.name}</div>
-        <div class="prod-desc">${p.description}</div>
+        <h3 class="prod-name">${p.name}</h3>
+        <p class="prod-desc">${p.description}</p>
         <div class="prod-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
       </div>
-    </div>`).join('');
+    </article>`).join('');
 }
 
 function renderMission() {
@@ -99,60 +132,74 @@ function renderWhyUs() {
 
 function renderContact() {
   const c = GILP_DATA.contact;
-  setHTML('contact-address', c.address.replace(/\n/g, '<br>'));
-  setHTML('contact-phone',   c.phone   ? `<a href="tel:${c.phone}" style="color:inherit;text-decoration:none">${c.phone}</a>` : '—');
-  setHTML('contact-email',   c.email   ? `<a href="mailto:${c.email}" style="color:var(--teal-dark)">${c.email}</a>` : '—');
-  setText('contact-hours', c.hours || 'Mon–Sat: 9:00 AM – 6:00 PM IST');
+  setHTML('contact-address', c.address.replace(/\n/g,'<br>'));
+  setHTML('contact-phone',   c.phone ? `<a href="tel:${c.phone}">${c.phone}</a>` : '<em style="color:#aaa">Add via Admin</em>');
+  setHTML('contact-email',   c.email ? `<a href="mailto:${c.email}">${c.email}</a>` : '');
+  setText('contact-hours',   c.hours);
+  if (c.whatsapp) {
+    const wa = document.getElementById('contact-whatsapp-row');
+    if (wa) { wa.style.display = 'flex'; setText('contact-whatsapp', c.whatsapp); }
+  }
 }
 
 function renderFooter() {
   const c = GILP_DATA.contact;
+  setHTML('footer-email',   c.email ? `<a href="mailto:${c.email}">${c.email}</a>` : '');
+  setText('footer-phone',   c.phone || '');
   setText('footer-address', c.address.split('\n').join(', '));
-  setText('footer-email', c.email);
-  setText('footer-phone', c.phone);
-  const yr = new Date().getFullYear();
-  setHTML('footer-copy', `© ${yr} GILP Laboratories. All rights reserved.`);
+  setHTML('footer-copy',    `© ${new Date().getFullYear()} GILP Laboratories. All rights reserved.`);
 }
 
-/* ——— helpers ——— */
+/* ──────────────────────────────────────────
+   CONTACT FORM
+────────────────────────────────────────── */
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    showToast('✓ Enquiry sent! We will contact you shortly.');
+    contactForm.reset();
+  });
+}
+
+/* ──────────────────────────────────────────
+   HELPERS
+────────────────────────────────────────── */
 function setText(id, val) {
   const el = document.getElementById(id);
-  if (el) el.textContent = val;
+  if (el) el.textContent = val || '';
 }
 function setHTML(id, val) {
   const el = document.getElementById(id);
-  if (el) el.innerHTML = val;
+  if (el) el.innerHTML = val || '';
 }
 
-/* ——— Toast ——— */
 function showToast(msg = '✓ Saved!') {
   const t = document.getElementById('toast');
   if (!t) return;
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 3000);
 }
+window.showToast = showToast;
 
-/* ——— Contact form ——— */
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', e => {
-    e.preventDefault();
-    showToast('✓ Enquiry submitted! We will contact you shortly.');
-    contactForm.reset();
-  });
-}
-
-/* ——— Smooth scroll for all anchors ——— */
+/* Smooth anchor scroll */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
     if (target) {
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const offset = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   });
 });
 
-/* ——— Init ——— */
-document.addEventListener('DOMContentLoaded', renderSite);
+/* ──────────────────────────────────────────
+   INIT
+────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  renderSite();
+  updateActiveLink();
+});
